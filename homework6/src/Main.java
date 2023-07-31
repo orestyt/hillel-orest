@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,6 +6,7 @@ public class Main {
                 "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive", " pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
         final Random random = new Random();
         int randIndex = random.nextInt(24);
+//        String correctWord = "apple";
         String correctWord = words[randIndex];
         String usersWord = typeInWord();
         while (!checkIfCorrectWord(correctWord, usersWord)) {
@@ -50,25 +48,32 @@ public class Main {
     }
 
     public static boolean checkIfCorrectWord(String source, String target) {
-        char[] sourceChar = source.toCharArray();
-        char[] targetChar = target.toCharArray();
+
         if (source.equals(target)) return true;
         else {
-            for (int i = 0; i < 15; ) {
-                while (i < sourceChar.length && i < targetChar.length) {
-                    if (sourceChar[i] == targetChar[i]) {
-                        System.out.print(sourceChar[i]);
-                        i++;
-                    } else {
-                        System.out.print("#");
-                        i++;
-                    }
-                }
-                System.out.print("#");
-                i++;
-            }
+            System.out.println(helpWithWord(source, target));
             System.out.println(" ");
             return false;
         }
+    }
+
+    public static String helpWithWord(String source, String target){
+        char[] sourceChar = source.toCharArray();
+        char[] targetChar = target.toCharArray();
+        char[] resultChar = new char[15];
+        for (int i = 0; i < 15; ) {
+            while (i < sourceChar.length && i < targetChar.length) {
+                if (sourceChar[i] == targetChar[i]) {
+                    resultChar[i] = sourceChar[i];
+                    i++;
+                } else {
+                    resultChar[i] = '#';
+                    i++;
+                }
+            }
+            resultChar[i]='#';
+            i++;
+        }
+        return String.copyValueOf(resultChar);
     }
 }

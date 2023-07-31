@@ -51,4 +51,10 @@ class MainTest {
         assertFalse(result1);
         assertTrue(result2);
     }
+
+    @Test
+    void shouldHelpWithWord() {
+        String result1 = Main.helpWithWord("puzzle", "pizza");
+        assertEquals("p#zz###########", result1);
+    }
 }
