@@ -4,8 +4,8 @@ public class Human implements Participant {
     public final int run_distance;
     public final int jump_height;
 
-    public Human(int RUN_DISTANCE, int jump_height) {
-        this.run_distance = RUN_DISTANCE;
+    public Human(int run_distance, int jump_height) {
+        this.run_distance = run_distance;
         this.jump_height = jump_height;
     }
 

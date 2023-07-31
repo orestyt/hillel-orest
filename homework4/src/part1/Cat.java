@@ -4,9 +4,9 @@ public class Cat implements Participant {
     public final int run_distance;
     public final int jump_height;
 
-    public Cat(int RUN_DISTANCE, int JUMP_HEIGHT) {
-        this.run_distance = RUN_DISTANCE;
-        this.jump_height = JUMP_HEIGHT;
+    public Cat(int run_distance, int jump_height) {
+        this.run_distance = run_distance;
+        this.jump_height = jump_height;
     }
 
     @Override

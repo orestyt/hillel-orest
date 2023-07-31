@@ -4,9 +4,9 @@ public class Robot implements Participant {
     public final int run_distance;
     public final int jump_height;
 
-    public Robot(int run_distance, int JUMP_HEIGHT) {
+    public Robot(int run_distance, int jump_height) {
         this.run_distance = run_distance;
-        this.jump_height = JUMP_HEIGHT;
+        this.jump_height = jump_height;
     }
 
     @Override
