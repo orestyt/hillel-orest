@@ -1,18 +1,18 @@
 package part1;
 
 public class Human implements Participant {
-    public final int RUN_DISTANCE;
-    public final int JUMP_HEIGHT;
+    public final int run_distance;
+    public final int jump_height;
 
-    public Human(int RUN_DISTANCE, int JUMP_HEIGHT) {
-        this.RUN_DISTANCE = RUN_DISTANCE;
-        this.JUMP_HEIGHT = JUMP_HEIGHT;
+    public Human(int RUN_DISTANCE, int jump_height) {
+        this.run_distance = RUN_DISTANCE;
+        this.jump_height = jump_height;
     }
 
     @Override
     public boolean run(int distance) {
-        if (distance > RUN_DISTANCE) {
-            System.out.println("Person can't run more than " + RUN_DISTANCE);
+        if (distance > run_distance) {
+            System.out.println("Person can't run more than " + run_distance);
             return false;
         } else {
             System.out.println("Person runs through " + distance);
@@ -22,8 +22,8 @@ public class Human implements Participant {
 
     @Override
     public boolean jump(int height) {
-        if (height > JUMP_HEIGHT) {
-            System.out.println("Person can't jump higher than " + JUMP_HEIGHT);
+        if (height > jump_height) {
+            System.out.println("Person can't jump higher than " + jump_height);
             return false;
         } else {
             System.out.println("Person jumps " + height);
