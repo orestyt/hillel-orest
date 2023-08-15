@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/hillel-orest.iml" filepath="$PROJECT_DIR$/hillel-orest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hillel-orest.main.iml" filepath="$PROJECT_DIR$/.idea/modules/hillel-orest.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hillel-orest.test.iml" filepath="$PROJECT_DIR$/.idea/modules/hillel-orest.test.iml" />
     </modules>
   </component>
 </project>
