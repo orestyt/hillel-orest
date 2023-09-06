@@ -1,6 +1,6 @@
-package test.homework8;
+package homework8;
 
-import main.homework8.Main;
+import homework8.Main;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package main.homework8.phonebook;
+package homework8.phonebook;
 
 public class Record {
     private final String name;

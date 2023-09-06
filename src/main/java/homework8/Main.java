@@ -1,4 +1,4 @@
-package main.homework8;
+package homework8;
 
 import java.util.*;
 
