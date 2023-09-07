@@ -3,36 +3,8 @@ package homework16;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.*;
-import java.util.stream.Collectors;
 
-public class Product {
-    ProductType category;
-    double price;
-    boolean canApplyDiscount;
-    LocalDate date;
-
-    public Product(ProductType category, double price, boolean canApplyDiscount, LocalDate date) {
-        this.category = category;
-        this.price = price;
-        this.canApplyDiscount = canApplyDiscount;
-        this.date = date;
-    }
-
-    public ProductType getCategory() {
-        return category;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public boolean isCanApplyDiscount() {
-        return canApplyDiscount;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
+public record Product(ProductType category, double price, boolean canApplyDiscount, LocalDate date) {
 
     @Override
     public boolean equals(Object o) {
@@ -40,11 +12,6 @@ public class Product {
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
         return Double.compare(price, product.price) == 0 && canApplyDiscount == product.canApplyDiscount && category == product.category && Objects.equals(date, product.date);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(category, price, canApplyDiscount, date);
     }
 
     @Override
@@ -59,24 +26,24 @@ public class Product {
 
     public static List<Product> getHighPriceBook(List<Product> productList) {
         return productList.stream()
-                .filter(product -> product.getCategory() == ProductType.BOOK)
-                .filter(product -> product.getPrice() >= 250)
+                .filter(product -> product.category() == ProductType.BOOK)
+                .filter(product -> product.price() >= 250)
                 .toList();
     }
 
 
     public static List<Product> getDiscountBook(List<Product> productList) {
         return productList.stream()
-                .filter(product -> product.getCategory() == ProductType.BOOK)
-                .filter(product -> product.isCanApplyDiscount())
-                .map(product -> new Product(product.getCategory(), product.getPrice() * 0.9, product.isCanApplyDiscount(), product.getDate()))
+                .filter(product -> product.category() == ProductType.BOOK)
+                .filter(product -> product.canApplyDiscount())
+                .map(product -> new Product(product.category(), product.price() * 0.9, product.canApplyDiscount(), product.date()))
                 .toList();
     }
 
 
     public static List<Product> getLastThree(List<Product> productList) {
         return productList.stream()
-                .sorted(Comparator.comparing(Product::getDate, Comparator.nullsLast(Comparator.reverseOrder())))
+                .sorted(Comparator.comparing(Product::date, Comparator.nullsLast(Comparator.reverseOrder())))
                 .limit(3)
                 .toList();
     }
@@ -84,18 +51,18 @@ public class Product {
 
     public static Product getCheapestBook(List<Product> productList) throws Exception {
         return productList.stream()
-                .filter(product -> product.getCategory() == ProductType.BOOK)
-                .min(Comparator.comparingDouble(Product::getPrice))
+                .filter(product -> product.category() == ProductType.BOOK)
+                .min(Comparator.comparingDouble(Product::price))
                 .orElseThrow(Exception::new);
     }
 
 
     public static int getSumCheapBook(List<Product> productList) {
         return productList.stream()
-                .filter(product -> product.getCategory() == ProductType.BOOK)
-                .filter(product -> product.isWithinRange(product.getDate()))
-                .filter(product -> product.getPrice() <= 75)
-                .mapToInt(product -> (int) product.getPrice())
+                .filter(product -> product.category() == ProductType.BOOK)
+                .filter(product -> product.isWithinRange(product.date()))
+                .filter(product -> product.price() <= 75)
+                .mapToInt(product -> (int) product.price())
                 .sum();
     }
 
@@ -105,12 +72,11 @@ public class Product {
     }
 
 
-
     public static Map<ProductType, List<Product>> groupProducts(List<Product> productList) {        //Не дуже розумію
         var streamBook = productList.stream()                                                       // як зробити краще
-                .filter(product -> product.getCategory() == ProductType.BOOK);
+                .filter(product -> product.category() == ProductType.BOOK);
         var streamMilk = productList.stream()
-                .filter(product -> product.getCategory() == ProductType.MILK);
+                .filter(product -> product.category() == ProductType.MILK);
         Map<ProductType, List<Product>> map = new HashMap<>();
         map.put(ProductType.BOOK, streamBook.toList());
         map.put(ProductType.MILK, streamMilk.toList());
