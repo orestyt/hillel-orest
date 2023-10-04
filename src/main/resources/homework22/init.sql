@@ -23,6 +23,16 @@ create table "Lesson"
 alter table "Lesson"
     owner to hillel;
 
+create table "Teacher"
+(
+    id   serial
+        primary key,
+    name text
+);
+
+alter table "Teacher"
+    owner to hillel;
+
 create table "Schedule"
 (
     id        serial
@@ -31,8 +41,12 @@ create table "Schedule"
     updatedat time,
     lessons   integer
         constraint lessons
-            references "Lesson"
+            references "Lesson",
+    teacher   integer
+        constraint teacher
+            references "Teacher"
 );
 
 alter table "Schedule"
     owner to hillel;
+
