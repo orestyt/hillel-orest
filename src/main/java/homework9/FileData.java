@@ -1,6 +1,6 @@
 package homework9;
 
-public class FileData {
+public class FileData  {
     private final String fileName;
     private final int fileByte;
     private final String filePath;
@@ -21,5 +21,14 @@ public class FileData {
         this.fileName = fileName;
         this.fileByte = fileByte;
         this.filePath = filePath;
+    }
+
+    @Override
+    public String toString() {
+        return "FileData{" +
+                "fileName='" + fileName + '\'' +
+                ", fileByte=" + fileByte +
+                ", filePath='" + filePath + '\'' +
+                '}';
     }
 }
